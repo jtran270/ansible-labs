@@ -1,7 +1,5 @@
-- name: "Install nginx packages"
+- name: "Install Nginx packages"
   apt:
     name: nginx
     state: present
-  tags: installation, nginx_configuration
-
-    
+  tags: installation

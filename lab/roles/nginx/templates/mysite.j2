@@ -1,18 +1,15 @@
-# This configuration is for {{ ansible_facts['nodename'] }}
+# Dynamic Config for server {{ ansible_facts["nodename"] }}
+
 
     upstream webservers {
-        {% for host in groups['webservers']  %}
-            server {{ hostvars[host]['ansible_facts']['nodename'] }}:{{ http_port }};
+        {% for host in groups["webservers"] %}
+            server {{ hostvars[host]["ansible_facts"]["nodename"] }}:{{ http_port }};
         {% endfor %}
-
-
-        #server web01:8000;
-        #server web02:8000;
     }
 
     server {
         listen 80;
-        location / {   
+        location / {
                 proxy_pass http://webservers;
         }
     }

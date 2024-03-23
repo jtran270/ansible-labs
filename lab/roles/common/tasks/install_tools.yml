@@ -1,10 +1,8 @@
-- name: "Install common packeges"
-  apt: name={{ item }} state=latest
-  with_items:
-    - pydf
-    - tree
-    - open-vm-tools
-    - python-pip
+- name: install common packages
+  apt:
+    name:
+      - pydf
+      - tree
+      - open-vm-tools
+    state: present
   tags: installation
-
-    
